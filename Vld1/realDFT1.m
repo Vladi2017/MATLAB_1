@@ -10,7 +10,7 @@ ImX=zeros(1,N/2+1);% --""--
 circ_k1 = 2*pi*n/N; %N points row vector on unitCircle for frequency k=1, span [0 - 2pi-(1/N)pi]
 for k = 0:1:N/2 %N/2+1 values, see eq.31-1/pg.567, k span [0:N/2);
   ReX(k+1) = 2/N*sum(x.*cos(circ_k1*k));%it should be ReX(k), but we don't have 0 based indexing support
-  ImX(k+1) = -2/N*sum(x.*sin(circ_k1*k));
+  ImX(k+1) = 2/N*sum(x.*sin(circ_k1*k));
 endfor;
 ReX(0+1) = ReX(0+1)/2;%see eq.8-3/page.153
 ReX(N/2+1) = ReX(N/2+1)/2;% --""--. Remember, we don't have 0 based indexing support, so we must "+1".

@@ -22,6 +22,6 @@ xSyn = zeros(1,N);
 k = 0:N/2;
 circ_n1=2*pi*k/N;%k points (N/2+1) row vector for time i=1, span [0 - pi]
 for i = 0:1:N-1
-  xSyn(i+1) = sum(ReX.*cos(circ_n1*i) + sum(ImX.*sin(circ_n1*i);
+  xSyn(i+1) = sum(ReX.*cos(circ_n1*i)) + sum(ImX.*sin(circ_n1*i));
 endfor;
 figure; stem(n,xSyn); title("xSyn[n]. compare with x[n]."); xlabel('Time row vector n, N points, 0 - N-1');

@@ -2,11 +2,12 @@
 % web http://www.ee.columbia.edu/~ronw/adst-spring2010/lectures/matlab/lecture1.html -browser
 % V: autonomous cell;
 filename = 'flute-C4.wav';
-[x2 sr2] = wavread(filename);
+## [x2 sr2] = wavread(filename); ##Vld1.wavread function is deprecated as of Octave version 5.(9:23 PM 8/13/2021)
+[x2 sr2] = audioread(filename);
 % Get the time axis right.
 t2 = linspace(0, length(x2) / sr2, length(x2));
 soundsc(x2, sr2); %%Vld.don't work in Octave/Cygwin ("error: portaudio not found on your system")
-plot(t2, x2);
+plot(t2, x2); ##but soundsc works in Octave_5.x/W10.
 xlabel('Time (sec)');
 %% Resampling
 % V: this cell depend on "Audio IO" cell(s).
@@ -38,7 +39,8 @@ pause; clear all; close all;
 % V: autonomous cell;
 %  This time for x2 signal (.wav from file)
 filename = 'flute-C4.wav';
-[x2 sr2] = wavread(filename);
+## [x2 sr2] = wavread(filename); see.Vld1.
+[x2 sr2] = audioread(filename);
 X2 = fft(x2(1:1024));
 f2 = linspace(0, sr2, length(X2));
 % Recall that for real-valued signals the DFT is always symmetric around
@@ -137,7 +139,8 @@ keyboard; clear all; close all;
 % V: autonomous cell;
 % V: Spectrogram plot the (real??) signal spectral analyses over time
 filename = 'flute-C4.wav';
-[x2 sr2] = wavread(filename);
+## [x2 sr2] = wavread(filename); see.Vld1.
+[x2 sr2] = audioread(filename);
 nwin = 512; % samples in (direct fft) time [n] window
 noverlap = 256; %samples overlap with previous time [n] window
 nfft = 512; %samples

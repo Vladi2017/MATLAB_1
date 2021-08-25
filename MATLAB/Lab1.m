@@ -15,7 +15,7 @@ x2=A2*cos(2*pi*freq*t+angle2);
 % each one has the correct maximum amplitude.
 plot(t,x1); title(['x1=',int2str(A1),'cos(2pi*',int2str(freq),'*t+pi/4)']); grid on;
 keyboard;
-figure(2); plot(t,x2); title(['x1=',int2str(A2),'cos(2pi*',int2str(freq),'*t-pi/6)']); grid on; xlabel('Time');
+figure(2); plot(t,x2); title(['x2=',int2str(A2),'cos(2pi*',int2str(freq),'*t-pi/6)']); grid on; xlabel('Time');
 keyboard;
 % % (e) Create a third sinusoid as the sum: x3(t) = x1(t) + x2(t).
 % (f) Measure the magnitude and phase of x3(t) directly from the plot. In your lab report, explain how

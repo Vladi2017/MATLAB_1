@@ -25,3 +25,5 @@ for i = 0:1:N-1
   xSyn(i+1) = sum(ReX.*cos(circ_n1*i)) + sum(ImX.*sin(circ_n1*i));
 endfor;
 figure; stem(n,xSyn); title("xSyn[n]. compare with x[n]."); xlabel('Time row vector n, N points, 0 - N-1');
+%>> sum(cos(circ_k1*3).*cos(circ_k1*5))
+%ans =   -1.0825e-15 Vld. orthogonality property of basis functions signals

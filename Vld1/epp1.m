@@ -20,7 +20,7 @@
 ## Author: MVM <mvmanol@yahoo.com>
 ## Description: Empirical PDF shape.
 
-function epp1(outcomes, r)
+function pdfV = epp1(outcomes, r)
   min1 = min(min(outcomes));
   max1 = max(max(outcomes));
   N = numel(outcomes);
@@ -39,4 +39,7 @@ function epp1(outcomes, r)
   X = 0 : r;
   stairs (X, pdf);
   ylim([0 max(pdf)]);
+  if nargout == 1
+    pdfV = pdf(1:end-1); #pdfVec, sum(pdfV) should be 1.
+  endif
 endfunction

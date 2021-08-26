@@ -5,7 +5,8 @@
 ## @deftypefnx {} {} @var{pdfVec} = epp (@var{outcomes}[, @var{r}])
 ## @deftypefnx {} {} [@var{pdfVec}, @var{cdfVec}] = epp (@var{outcomes}[, @var{r}])
 ## Plot probability density function (PDF) and cumulative DF (CDF) shape for
-## empirical univariate @var{outcomes} at resolution @var{r}. epp = empirical_pdf_plot.
+## empirical univariate @var{outcomes} at resolution @var{r}.
+## eup = empirical_univariate_plot.
 ##
 ## @var{r} is natural scalar >= 1, with default value 64.
 ## @subheading Usage example:
@@ -18,9 +19,9 @@
 ## @end deftypefn
 
 ## Author: MVM <mvmanol@yahoo.com>
-## Description: Empirical PDF shape.
+## Description: Empirical probability plots.
 
-function [pdfV, cdfV] = epp1(outcomes, r = 64)
+function [pdfV, cdfV] = eup(outcomes, r = 64)
   min1 = min(min(outcomes));
   max1 = max(max(outcomes));
   N = numel(outcomes);

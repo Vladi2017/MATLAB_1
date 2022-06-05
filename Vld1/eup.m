@@ -41,9 +41,11 @@ function [pdfV, cdfV] = eup(outcomes, r = 64, fig = 1000)
     wndinf += delta;
   endfor
   pdfabs(r) = N - sum(pdfabs);
-  pdfabs(r+1) = pdfabs(r);
-  pdf = pdfabs / N;
   X = min1 : delta : max1;
+  if (numel(pdfabs) < numel(X))
+    pdfabs(r+1) = pdfabs(r);
+  endif
+  pdf = pdfabs / N;
   if (fig == 1000)
     figure;
   else
@@ -66,7 +68,9 @@ function [pdfV, cdfV] = eup(outcomes, r = 64, fig = 1000)
   for k = 2 : r
     cdf(k) = cdf(k-1) + pdf(k); #cdf = ∫pdf
   endfor
-  cdf(r+1) = cdf(r);
+  if (numel(cdf) < numel(X))
+    cdf(r+1) = cdf(r);
+  endif
   subplot(2,1,2);
   if (fig != 1000)
     hold on;

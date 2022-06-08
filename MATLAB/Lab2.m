@@ -16,7 +16,7 @@ x3 = resample(x2, 8000, sr3);
 subplot(211); title('Flute'); plot(x2)
 subplot(212); plot(x3); title('Resampled flute'); xlabel('Time (samples)');
 soundsc(x3, 2*sr2);
-pause; clear all; close all;
+printf("\npress blank key to continue"); pause; clear all; close all;
 %% FourierTransform_1
 % V: autonomous cell;
 % Pick a sampling rate.
@@ -34,7 +34,7 @@ subplot(211);plot(f, 1/length(t)*abs(X));title('Magnitude');%V:see scaling facto
 subplot(212);plot(f, angle(X));title('Phase [radians]');xlabel('Frequency (Hz)');
 % Recall that for real-valued signals the DFT is always symmetric around
 % sr/2 (or 0), so we only need to plot the first half.
-pause; clear all; close all;
+printf("\npress blank key to continue"); pause; clear all; close all;
 %% fundamental_frequency
 % V: autonomous cell;
 %  This time for x2 signal (.wav from file)
@@ -47,7 +47,7 @@ f2 = linspace(0, sr2, length(X2));
 % sr/2 (or 0), so we only need to plot the first half.
 subplot(211);plot(f2(1:end/2+1), abs(X2(1:end/2+1)));title('Magnitude');
 subplot(212);plot(f2(1:end/2+1), angle(X2(1:end/2+1)));title('Phase [rad]');xlabel('Frequency (Hz)');
-setAlwaysOnTop(gcf,true);
+%% setAlwaysOnTop(gcf,true); %not support for Octave.
 % Whats the (approximate) fundamental frequency of the flute note (C4)?
 % Just find the bin corresponding to the first peak in the magnitude spectrum.
 mag = abs(X2);
@@ -80,7 +80,7 @@ f = linspace(0, sr, length(t)); %V: build f vector
 n = rand(1, length(t)) - 0.5;
 % Simple FIR filter: h[n] = 0.5*d[n] + 0.5*d[n-1] (V: vhere d[n] is unit impulse)
 filt = [0.5, 0.5]; %V: filter impulse response (well known as h[n]).
-% Lets filter some noise buy convolving it with the impulse response.
+printf("\n\nLets filter some noise by convolving it with the impulse response.\n");
 % Recall that the convolution of two signals with length N1 and N2 is
 % N1 + N2 - 1.  The 'same' argument just tells conv to truncate the
 % convolved signal at N1 samples.
@@ -90,7 +90,8 @@ Y = fft(y);
 idx = 1:length(n) / 2 + 1;
 subplot(211); plot(f(idx), abs(N(idx))); title('WhiteNoise spectrum');
 subplot(212); plot(f(idx), abs(Y(idx))); xlabel('Frequency (Hz)'); title('FilteredNoise');
-setAlwaysOnTop(gcf,true);
+keyboard;
+%% setAlwaysOnTop(gcf,true); %not support for Octave.
 %% IIR1
 % V: this cell depend on "FIR1" cell(s).
 % [b a] = butter(2, [400 1500]/sr); V: this is original, but seems more
@@ -125,7 +126,7 @@ fprintf('\nLast updated %s\n', datestr(7.3508e+05));
 keyboard; clear all; close all;
 %% UnstableFilter
 % V: autonomous cell;
-% Lets make an unstable filter.
+printf("\n\n\nLets make an unstable filter..\n");
 b = 1;
 a = [1 2];
 zplane(b, a); keyboard;
